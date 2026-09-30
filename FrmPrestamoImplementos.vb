@@ -116,6 +116,13 @@ Namespace PRO205.Semana7.Caso1.PrestamoImplementos.VB
                 ' Marca el resultado global como inválido.
                 esValido = False
             End If
+        // Verifica la cantidad máxima permitida de acuerso a la regla de negocio.
+            If nudCantidad.Value > 5D Then
+                Dim mensajeCantidad As String = "la cantidad máxima permitida es de 5 implementos"
+                errorProvider.SetError(nudCantidad, mensajeCantidad)
+                MessageBox.Show(mensajeCantidad, "Cantidad máxima excedida", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                esValido = False
+            End If
 
             ' Verifica que la fecha de devolución no quede en el pasado.
             If dtpDevolucion.Value.Date < DateTime.Today Then
